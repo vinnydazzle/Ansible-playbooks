@@ -1,0 +1,17 @@
+---
+- name: update n5
+  hosts: n5
+  become: yes
+  
+  tasks:
+  - name: Ensure Default page removed
+    file:
+      path: /var/www/html/index.html
+      state: absent
+
+  - name: Ensure site updated
+    git:
+      repo: https://github.com/ravi2krishna/ecomm.git
+      dest: /var/www/html
+...
+
