@@ -1,0 +1,22 @@
+---
+- name: update n2
+  hosts: n2
+  become: yes
+  
+  tasks:
+  - name: Ensure httpd installed
+    package:
+      name: httpd
+      state: present
+
+  - name: Ensure httpd started
+    service:
+      name: httpd
+      state: started
+
+  - name: Ensure httpd enabled
+    service:
+      name: httpd
+      enabled: yes
+...
+
