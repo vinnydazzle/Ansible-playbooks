@@ -1,0 +1,17 @@
+---
+- name: update n2
+  hosts: n2
+  become: yes
+  
+  tasks:
+  - name: Ensure GIT  installed
+    package:
+      name: git
+      state: present
+
+  - name: Ensure site updated
+    git:
+      repo: https://github.com/ravi2krishna/food.git
+      dest: /var/www/html
+...
+
