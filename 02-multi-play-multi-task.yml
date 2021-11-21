@@ -1,0 +1,40 @@
+---
+- name: update N1
+  hosts: n1
+  
+  tasks:
+  - name: Ensure directory created
+    file:
+      path: /home/centos/n1_dir
+      state: directory
+
+  - name: Ensure File created
+    copy:
+      dest: /home/centos/n1.txt
+      content: N1
+
+- name: update N2
+  hosts: n2
+  
+  tasks:
+  - name: Ensure directory created
+    file:
+      path: /home/centos/n2_dir
+      state: directory
+
+  - name: Ensure File created
+    copy:
+      dest: /home/centos/n2.txt
+      content: N2
+
+- name: update web servers
+  hosts: web
+  
+  tasks:
+    - name: Ensure File created
+      copy:
+       dest: /home/centos/common.txt
+       content: WEB      
+ 
+...
+
