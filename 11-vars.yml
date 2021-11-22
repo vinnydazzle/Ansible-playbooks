@@ -1,0 +1,22 @@
+---
+- name: update all
+  hosts: all
+  become: yes
+  vars:
+    username: vineela
+  
+  tasks:
+  - name: Ensure static file updated
+    copy:
+      src: static.html
+      dest: /var/www/html/static.html
+
+  - name: Ensure dynamic file updated
+    template:
+      src: static.j2
+      dest: /var/www/html/dynamic.html
+
+
+
+...
+
