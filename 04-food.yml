@@ -1,6 +1,6 @@
 ---
-- name: update n2
-  hosts: n2
+- name: update all
+  hosts: all
   become: yes
   
   tasks:
