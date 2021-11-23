@@ -1,0 +1,27 @@
+---
+  - name: Ensure config file updated
+    template:
+      src: httpd.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+    - Restart http
+
+  - name: Ensure SELINUX permissive
+    selinux:
+      policy: targeted
+      state: permissive
+  
+  - name: Ensure static file updated
+    copy:
+      src: date.php
+      dest: /var/www/html/date.php
+
+  - name: Ensure PHP installed
+    package:
+      name: php
+      state: present
+    notify:
+    - Restart http
+
+...
+
